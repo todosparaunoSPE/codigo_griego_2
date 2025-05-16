@@ -76,10 +76,6 @@ with st.sidebar:
     st.markdown("### 🧑‍💻 Creado por:")
     st.markdown("**Javier Horacio Pérez Ricárdez**")
     st.markdown("---")
-    st.markdown("### 🔤 Alfabeto Griego:")
-    st.write("""
-    - **Minúsculas**: α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ/ς τ υ φ χ ψ ω  
-    - **Mayúsculas**: Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω
     """)
     st.markdown("---")
     st.markdown("### 📝 Instrucciones:")
@@ -92,16 +88,16 @@ with st.sidebar:
     """)
 
 # Configuración de la app principal con más estilo
-st.title("🔠 Secreto Griego 🏛️")
-st.markdown("### Generador y Traductor de Código Griego 🔐")
-st.markdown("*¡Crea mensajes secretos con tus amigos usando el alfabeto griego!* 🤫✨")
+st.title("🔠 CryptoChat Ultra 🏛️")
+st.markdown("### Generador y Traductor de Código 🔐")
+st.markdown("*¡Crea mensajes secretos con tus amigos usando CryptoChat Ultra !* 🤫✨")
 
 # Divider con emoji
 st.markdown("---")
 
 # Opciones con emojis más grandes
 opcion = st.radio("Selecciona una opción:", 
-                 ("🔤 Generar código griego", "🔍 Traducir código griego a español"),
+                 ("🔤 Generar código", "🔍 Traducir código a español"),
                  horizontal=True)
 
 # Animación de carga personalizada
@@ -115,10 +111,10 @@ def mostrar_animacion():
         st.markdown("✅ ¡Listo!")
 
 if opcion == "🔤 Generar código griego":
-    texto_original = st.text_area("✏️ Introduce el texto en español para convertir a griego:", 
+    texto_original = st.text_area("✏️ Introduce el texto en español para convertir a código:", 
                                   height=150, 
                                   placeholder="Escribe aquí tu texto en español...",
-                                  help="Puedes escribir cualquier mensaje que quieras convertir a griego")
+                                  help="Puedes escribir cualquier mensaje que quieras convertir a código")
 
     if st.button("✨ Generar Código Griego ✨", type="primary"):
         if texto_original:
@@ -137,12 +133,12 @@ if opcion == "🔤 Generar código griego":
                 # Consejo adicional
                 st.markdown("💡 *¡Ahora puedes enviar este código secreto a tus amigos!*")
         else:
-            st.warning("⚠️ Por favor introduce un texto para generar el código griego.")
+            st.warning("⚠️ Por favor introduce un texto para generar el código.")
 else:
-    texto_griego = st.text_area("🔍 Introduce el código en griego para traducir a español:", 
+    texto_griego = st.text_area("🔍 Introduce el código para traducir a español:", 
                                 height=150, 
-                                placeholder="Escribe aquí tu texto en griego...",
-                                help="Pega aquí el código griego que recibiste")
+                                placeholder="Escribe aquí tu texto codificado...",
+                                help="Pega aquí el código codificado que recibiste")
 
     if st.button("🔎 Traducir a Español 🔍", type="primary"):
         if texto_griego:
@@ -160,7 +156,7 @@ else:
             # Emoji de celebración
             st.markdown("🥳 *¡Mensaje descifrado con éxito!*")
         else:
-            st.warning("⚠️ Por favor introduce un código en griego para traducir.")
+            st.warning("⚠️ Por favor introduce un código para traducir.")
 
 # Mostrar botones de WhatsApp si hay contenido generado (con más estilo)
 if 'texto_griego' in st.session_state:
