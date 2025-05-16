@@ -76,7 +76,7 @@ with st.sidebar:
     st.markdown("### 🧑‍💻 Creado por:")
     st.markdown("**Javier Horacio Pérez Ricárdez**")
     st.markdown("---")
-    """)
+   
     st.markdown("---")
     st.markdown("### 📝 Instrucciones:")
     st.write("""
