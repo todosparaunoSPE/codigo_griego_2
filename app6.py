@@ -147,7 +147,7 @@ else:
     
     texto_griego = st.text_area("🔍 Introduce el código para traducir a español:", 
                               height=150, 
-                              placeholder="Escribe aquí tu texto en griego...",
+                              placeholder="Escribe aquí tu texto en código...",
                               help="Pega aquí el texto en griego que recibiste")
 
     if st.button("🔎 Traducir a Español 🔍", type="primary"):
