@@ -1,12 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 15 19:31:05 2025
+Created on Sun May 18 17:13:49 2025
 
 @author: jahop
 """
 
 import streamlit as st
 import urllib.parse
+import os
+from time import sleep
+
+# Función para cargar/guardar el contador de visitas
+def cargar_contador():
+    if not os.path.exists('contador.txt'):
+        with open('contador.txt', 'w') as f:
+            f.write('0')
+    with open('contador.txt', 'r') as f:
+        return int(f.read())
+
+def guardar_contador(contador):
+    with open('contador.txt', 'w') as f:
+        f.write(str(contador))
+
+# Incrementar contador al cargar la página
+contador_visitas = cargar_contador()
+contador_visitas += 1
+guardar_contador(contador_visitas)
 
 # Mapeo de letras griegas a español
 griego_a_espanol = {
@@ -70,6 +89,13 @@ def crear_enlace_whatsapp(mensaje):
     texto_codificado = urllib.parse.quote(mensaje)
     return f"https://wa.me/?text={texto_codificado}"
 
+def mostrar_animacion():
+    with st.empty():
+        for i in range(3):
+            st.markdown("🔍 Traduciendo" + "." * (i + 1))
+            sleep(0.3)
+        st.markdown("✅ ¡Listo!")
+
 # Configuración del sidebar con emojis y estilo más juvenil
 with st.sidebar:
     st.title("📌 Información")
@@ -77,8 +103,12 @@ with st.sidebar:
     st.markdown("### 🧑‍💻 Creado por:")
     st.markdown("**irepohaj**")
     st.markdown("---")
-   
+    
+    # Mostrar contador de visitas
+    st.markdown(f"### 👀 Visitas totales:")
+    st.markdown(f"**{contador_visitas}**")
     st.markdown("---")
+   
     st.markdown("### 📝 Instrucciones:")
     st.write("""
     1. 🔘 Selecciona la operación deseada  
@@ -100,16 +130,6 @@ st.markdown("---")
 opcion = st.radio("Selecciona una opción:", 
                  ("🔤 Generar código", "🔍 Traducir código a español"),
                  horizontal=True)
-
-# Animación de carga personalizada
-from time import sleep
-
-def mostrar_animacion():
-    with st.empty():
-        for i in range(3):
-            st.markdown("🔍 Traduciendo" + "." * (i + 1))
-            sleep(0.3)
-        st.markdown("✅ ¡Listo!")
 
 if opcion == "🔤 Generar código":
     # Limpiar variables de traducción si existen
