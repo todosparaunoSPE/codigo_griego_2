@@ -74,7 +74,7 @@ with st.sidebar:
     st.title("📌 Información")
     st.markdown("---")
     st.markdown("### 🧑‍💻 Creado por:")
-    st.markdown("**Javier Horacio Pérez Ricárdez**")
+    st.markdown("**irepohaj**")
     st.markdown("---")
    
     st.markdown("---")
