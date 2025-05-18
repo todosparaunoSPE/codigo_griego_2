@@ -161,7 +161,7 @@ else:
 # Mostrar botones de WhatsApp si hay contenido generado (con más estilo)
 if 'texto_griego' in st.session_state:
     mensaje1 = f"\n{st.session_state.texto_griego}"
-    mensaje2 = "🤫 ¿Quieres traducir el código secreto que te ha llegado? 🏛️\nVisita:\nhttps://codigogriego1-afosmbmynw5dexe8vemtnj.streamlit.app/"
+    mensaje2 = "🤫 ¿Quieres traducir el código secreto que te ha llegado? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/"
     enlace1 = crear_enlace_whatsapp(mensaje1)
     enlace2 = crear_enlace_whatsapp(mensaje2)
 
@@ -175,7 +175,7 @@ if 'texto_griego' in st.session_state:
 
 if 'texto_traducido' in st.session_state:
     mensaje1 = f"🔓 Traducción del código secreto:\n\n🏛️ Original: {st.session_state.texto_griego_original}\n\n🇪🇸 Traducción: {st.session_state.texto_traducido}"
-    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego1-afosmbmynw5dexe8vemtnj.streamlit.app/"
+    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/"
     enlace1 = crear_enlace_whatsapp(mensaje1)
     enlace2 = crear_enlace_whatsapp(mensaje2)
 
