@@ -122,7 +122,7 @@ if opcion == "🔤 Generar código":
                                 placeholder="Escribe aquí tu texto en español...",
                                 help="Puedes escribir cualquier mensaje que quieras convertir a griego")
 
-    if st.button("✨ Generar Código Griego ✨", type="primary"):
+    if st.button("✨ Generar Código ✨", type="primary"):
         if texto_original:
             with st.spinner('🔮 Transformando tu texto...'):
                 sleep(1)
