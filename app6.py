@@ -185,8 +185,7 @@ if opcion == "🔤 Generar código" and 'texto_griego' in st.session_state:
 
 elif opcion == "🔍 Traducir código a español" and 'texto_traducido' in st.session_state:
     mensaje1 = f"🔓 Traducción del código secreto:\n\n🏛️ Original: {st.session_state.texto_griego_original}\n\n🇪🇸 Traducción: {st.session_state.texto_traducido}"
-    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/
-"
+    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/"
     enlace1 = crear_enlace_whatsapp(mensaje1)
     enlace2 = crear_enlace_whatsapp(mensaje2)
 
