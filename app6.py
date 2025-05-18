@@ -140,7 +140,7 @@ if opcion == "🔤 Generar código":
     texto_original = st.text_area("✏️ Introduce el texto en español para convertir a código:", 
                                 height=150, 
                                 placeholder="Escribe aquí tu texto en español...",
-                                help="Puedes escribir cualquier mensaje que quieras convertir a griego")
+                                help="Puedes escribir cualquier mensaje que quieras convertir a código")
 
     if st.button("✨ Generar Código ✨", type="primary"):
         if texto_original:
