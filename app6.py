@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon May 12 18:24:05 2025
+Created on Thu May 15 19:31:05 2025
 
 @author: jahop
 """
@@ -30,7 +30,7 @@ def traducir_griego_a_espanol(texto):
     i = 0
     n = len(texto)
     while i < n:
-        for length in [2, 1]:
+        for length in [2, 1]:  # Primero intentamos con 2 caracteres, luego con 1
             if i + length <= n:
                 substring = texto[i:i+length]
                 if substring in griego_a_espanol:
@@ -47,10 +47,11 @@ def traducir_espanol_a_griego(texto):
     i = 0
     n = len(texto)
     while i < n:
-        for length in [2, 1]:
+        for length in [2, 1]:  # Primero intentamos con 2 caracteres (para dígrafos como 'ph', 'th', etc.)
             if i + length <= n:
                 substring = texto[i:i+length].lower()
                 if substring in espanol_a_griego:
+                    # Mantenemos la capitalización original
                     if texto[i:i+length].istitle():
                         traducido = espanol_a_griego[substring].title()
                     elif texto[i:i+length].isupper():
@@ -90,7 +91,7 @@ with st.sidebar:
 # Configuración de la app principal con más estilo
 st.title("🔠 CryptoChat Ultra 🏛️")
 st.markdown("### Generador y Traductor de Código 🔐")
-st.markdown("*¡Crea mensajes secretos con tus amigos usando CryptoChat Ultra !* 🤫✨")
+st.markdown("*¡Crea mensajes secretos con tus amigos usando CryptoChat Ultra!* 🤫✨")
 
 # Divider con emoji
 st.markdown("---")
@@ -110,11 +111,16 @@ def mostrar_animacion():
             sleep(0.3)
         st.markdown("✅ ¡Listo!")
 
-if opcion == "🔤 Generar código griego":
+if opcion == "🔤 Generar código":
+    # Limpiar variables de traducción si existen
+    if 'texto_traducido' in st.session_state:
+        del st.session_state.texto_traducido
+        del st.session_state.texto_griego_original
+    
     texto_original = st.text_area("✏️ Introduce el texto en español para convertir a código:", 
-                                  height=150, 
-                                  placeholder="Escribe aquí tu texto en español...",
-                                  help="Puedes escribir cualquier mensaje que quieras convertir a código")
+                                height=150, 
+                                placeholder="Escribe aquí tu texto en español...",
+                                help="Puedes escribir cualquier mensaje que quieras convertir a griego")
 
     if st.button("✨ Generar Código Griego ✨", type="primary"):
         if texto_original:
@@ -135,10 +141,14 @@ if opcion == "🔤 Generar código griego":
         else:
             st.warning("⚠️ Por favor introduce un texto para generar el código.")
 else:
+    # Limpiar variables de generación si existen
+    if 'texto_griego' in st.session_state:
+        del st.session_state.texto_griego
+    
     texto_griego = st.text_area("🔍 Introduce el código para traducir a español:", 
-                                height=150, 
-                                placeholder="Escribe aquí tu texto codificado...",
-                                help="Pega aquí el código codificado que recibiste")
+                              height=150, 
+                              placeholder="Escribe aquí tu texto en griego...",
+                              help="Pega aquí el texto en griego que recibiste")
 
     if st.button("🔎 Traducir a Español 🔍", type="primary"):
         if texto_griego:
@@ -158,8 +168,8 @@ else:
         else:
             st.warning("⚠️ Por favor introduce un código para traducir.")
 
-# Mostrar botones de WhatsApp si hay contenido generado (con más estilo)
-if 'texto_griego' in st.session_state:
+# Mostrar botones de WhatsApp correspondientes a la opción actual
+if opcion == "🔤 Generar código" and 'texto_griego' in st.session_state:
     mensaje1 = f"\n{st.session_state.texto_griego}"
     mensaje2 = "🤫 ¿Quieres traducir el código secreto que te ha llegado? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/"
     enlace1 = crear_enlace_whatsapp(mensaje1)
@@ -173,9 +183,10 @@ if 'texto_griego' in st.session_state:
     with col2:
         st.markdown(f'<a href="{enlace2}" target="_blank"><button style="background-color:#128C7E;color:white;border:none;border-radius:10px;padding:12px;width:100%;font-size:16px;">🔗 2° Envía el enlace para descifrar</button></a>', unsafe_allow_html=True)
 
-if 'texto_traducido' in st.session_state:
+elif opcion == "🔍 Traducir código a español" and 'texto_traducido' in st.session_state:
     mensaje1 = f"🔓 Traducción del código secreto:\n\n🏛️ Original: {st.session_state.texto_griego_original}\n\n🇪🇸 Traducción: {st.session_state.texto_traducido}"
-    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/"
+    mensaje2 = "🔤 ¿Quieres generar o traducir código griego? 🏛️\nVisita:\nhttps://codigogriego2-wxw4rpy9esfx7hfe6vrbm8.streamlit.app/
+"
     enlace1 = crear_enlace_whatsapp(mensaje1)
     enlace2 = crear_enlace_whatsapp(mensaje2)
 
