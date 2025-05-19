@@ -98,7 +98,7 @@ def mostrar_animacion():
 
 # Configuración del sidebar con emojis y estilo más juvenil
 with st.sidebar:
-    st.title("📌 Información")
+    st.title("📌 Informa")
     st.markdown("---")
     st.markdown("### 🧑‍💻 Creado por:")
     st.markdown("**jahoperi**")
