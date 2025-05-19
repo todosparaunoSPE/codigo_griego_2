@@ -101,7 +101,7 @@ with st.sidebar:
     st.title("📌 Información")
     st.markdown("---")
     st.markdown("### 🧑‍💻 Creado por:")
-    st.markdown("**irepohaj**")
+    st.markdown("**jahoperi**")
     st.markdown("---")
     
     # Mostrar contador de visitas
